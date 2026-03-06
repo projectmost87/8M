@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Feliz Día de la Mujer</title>
+
+<style>
+
+body{
+margin:0;
+font-family: 'Segoe UI', sans-serif;
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+text-align:center;
+color:white;
+overflow:hidden;
+background: linear-gradient(-45deg,#ff4fa3,#7b2cbf,#c77dff,#ff85c1);
+background-size:400% 400%;
+animation:fondo 10s ease infinite;
+}
+
+@keyframes fondo{
+0%{background-position:0% 50%;}
+50%{background-position:100% 50%;}
+100%{background-position:0% 50%;}
+}
+
+.container{
+max-width:700px;
+padding:40px;
+backdrop-filter: blur(10px);
+background:rgba(255,255,255,0.1);
+border-radius:20px;
+box-shadow:0 0 30px rgba(0,0,0,0.3);
+}
+
+h1{
+font-size:50px;
+}
+
+p{
+font-size:20px;
+line-height:1.6;
+}
+
+button{
+margin-top:30px;
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:30px;
+background:white;
+color:#7b2cbf;
+cursor:pointer;
+transition:0.3s;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+.mensaje{
+margin-top:25px;
+font-size:22px;
+display:none;
+}
+
+/* flores */
+
+.flower{ 
+position:absolute; 
+top:-50px; 
+font-size:25px; 
+animation:fall linear infinite; 
+} 
+@keyframes fall{ 
+0%{transform:translateY(-50px) rotate(0deg);} 
+100%{transform:translateY(110vh) rotate(360deg);} 
+}
+
+.rosa{ position:absolute; top:-50px; font-size:30px; animation: caer linear infinite; } @keyframes caer{ 0%{ transform: translateY(-50px) rotate(0deg); opacity:1; } 100%{ transform: translateY(110vh) rotate(360deg); opacity:0.8; } }
+
+/* ROSAS Y PETALOS */ .flor{ position:absolute; top:-50px; pointer-events:none; animation: caer linear forwards; } @keyframes caer{ 0%{ transform:translateY(-50px) rotate(0deg); opacity:1; } 100%{ transform:translateY(110vh) rotate(360deg); opacity:0.8; } } /* EFECTO BRILLO */ .brillo{ position:absolute; width:6px; height:6px; background:white; border-radius:50%; box-shadow:0 0 10px white,0 0 20px white; animation: brillar 2s infinite; pointer-events:none; } @keyframes brillar{ 0%{ opacity:0; transform:scale(0.5); } 50%{ opacity:1; transform:scale(1.5); } 100%{ opacity:0; transform:scale(0.5); } }
+
+</style>
+</head>
+
+<body>
+
+<audio id="musica" autoplay loop> <source src="musica.mp3" type="audio/mpeg"> 
+</audio> 
+<script> window.addEventListener("click", function() { const audio = document.getElementById("musica"); audio.play(); }); </script>
+
+<div class="container">
+
+<h1>Feliz Día de la Mujer</h1>
+
+<p>
+Hoy celebramos tu fuerza, valentía e inspiración.
+Gracias por hacer del mundo un lugar mejor.
+</p>
+
+<button onclick="mostrarMensaje()">Ver mensaje especial 💜</button>
+
+<div class="mensaje" id="mensaje">
+✨ Nunca olvides lo increíble que eres.  
+Feliz Día de la Mujer. 💜🌸
+</div>
+
+</div>
+
+<script>
+
+function mostrarMensaje(){
+document.getElementById("mensaje").style.display="block";
+}
+
+// flores cayendo
+
+function crearFlor(){
+const flor=document.createElement("div");
+flor.classList.add("flower");
+flor.innerHTML="🌸";
+
+flor.style.left=Math.random()*100+"vw";
+flor.style.animationDuration=(Math.random()*5+5)+"s";
+flor.style.fontSize=(Math.random()*20+20)+"px";
+
+document.body.appendChild(flor);
+
+setTimeout(()=>{
+flor.remove();
+},10000);
+}
+
+setInterval(crearFlor,300);
+
+function crearRosa()
+{ let rosa = document.createElement("div"); 
+rosa.classList.add("rosa"); 
+rosa.innerHTML="🌹"; 
+rosa.style.left=Math.random()*100+"vw"; 
+rosa.style.animationDuration=(Math.random()*5+5)+"s"; 
+rosa.style.fontSize=(Math.random()*20+20)+"px"; 
+document.body.appendChild(rosa); 
+setTimeout(()=>
+{ rosa.remove(); 
+},10000); 
+}
+
+setInterval(crearRosa,300);
+
+function crearFlor(){ let flor=document.createElement("div"); flor.classList.add("flor"); let tipos=["🌹","🌸","🌺","💮"]; flor.innerHTML=tipos[Math.floor(Math.random()*tipos.length)]; flor.style.left=Math.random()*100+"vw"; flor.style.fontSize=(Math.random()*25+20)+"px"; flor.style.animationDuration=(Math.random()*5+5)+"s"; document.body.appendChild(flor); setTimeout(()=>{ flor.remove(); },9000); } setInterval(crearFlor,250); /* EFECTO BRILLOS */ function crearBrillo(){ let brillo=document.createElement("div"); brillo.classList.add("brillo"); brillo.style.left=Math.random()*100+"vw"; brillo.style.top=Math.random()*100+"vh"; document.body.appendChild(brillo); setTimeout(()=>{ brillo.remove(); },2000); } setInterval(crearBrillo,150);
+
+function compartir(){
+
+let mensaje = "🌸 Feliz Día de la Mujer 💜\nMira esta página especial que hice para ti:\n";
+
+let url = window.location.href;
+
+let enlace = "https://wa.me/?text=" + encodeURIComponent(mensaje + url);
+
+window.open(enlace, "_blank");
+
+}
+</script>
+
+</body>
+</html>
+<button onclick="compartir()">Compartir por WhatsApp 📲</button>
