@@ -3,23 +3,22 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Feliz Día de la Mujer</title>
+<title>8 Marzo</title>
 
 <style>
 
 body{
 margin:0;
-font-family: 'Segoe UI', sans-serif;
+font-family:Arial, sans-serif;
 height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
-text-align:center;
-color:white;
 overflow:hidden;
-background: linear-gradient(-45deg,#ff4fa3,#7b2cbf,#c77dff,#ff85c1);
+color:white;
+background:linear-gradient(135deg,#ff4fa3,#7b2cbf,#ff85c1);
 background-size:400% 400%;
-animation:fondo 10s ease infinite;
+animation:fondo 12s infinite;
 }
 
 @keyframes fondo{
@@ -28,146 +27,130 @@ animation:fondo 10s ease infinite;
 100%{background-position:0% 50%;}
 }
 
-.container{
-max-width:700px;
-padding:40px;
-backdrop-filter: blur(10px);
-background:rgba(255,255,255,0.1);
-border-radius:20px;
-box-shadow:0 0 30px rgba(0,0,0,0.3);
+/* tarjeta estilo Instagram */
+.card{
+width:350px;
+padding:30px;
+border-radius:25px;
+background:rgba(255,255,255,0.15);
+backdrop-filter:blur(15px);
+box-shadow:0 20px 60px rgba(0,0,0,0.3);
+text-align:center;
+animation:entrada 1.5s ease;
 }
-
-h1{
-font-size:50px;
+@keyframes entrada{
+from{opacity:0; transform:translateY(50px);}
+to{opacity:1; transform:translateY(0);}
 }
-
-p{
-font-size:20px;
-line-height:1.6;
-}
-
+h1{font-size:30px; margin-bottom:15px;}
+p{font-size:17px; line-height:1.5;}
 button{
-margin-top:30px;
-padding:15px 35px;
-font-size:18px;
+margin-top:15px;
+padding:12px 25px;
 border:none;
-border-radius:30px;
+border-radius:25px;
 background:white;
 color:#7b2cbf;
+font-size:16px;
 cursor:pointer;
-transition:0.3s;
+transition:.3s;
 }
+button:hover{transform:scale(1.1);}
+.mensaje{display:none; margin-top:15px; font-size:18px;}
 
-button:hover{
-transform:scale(1.1);
-}
-
-.mensaje{
-margin-top:25px;
-font-size:22px;
-display:none;
-}
-
-/* flores */
-
-.flower{ 
-position:absolute; 
-top:-50px; 
-font-size:25px; 
-animation:fall linear infinite; 
-} 
-@keyframes fall{ 
-0%{transform:translateY(-50px) rotate(0deg);} 
-100%{transform:translateY(110vh) rotate(360deg);} 
-}
-
-.rosa{ position:absolute; top:-50px; font-size:30px; animation: caer linear infinite; } @keyframes caer{ 0%{ transform: translateY(-50px) rotate(0deg); opacity:1; } 100%{ transform: translateY(110vh) rotate(360deg); opacity:0.8; } }
-
-/* ROSAS Y PETALOS */ .flor{ position:absolute; top:-50px; pointer-events:none; animation: caer linear forwards; } @keyframes caer{ 0%{ transform:translateY(-50px) rotate(0deg); opacity:1; } 100%{ transform:translateY(110vh) rotate(360deg); opacity:0.8; } } /* EFECTO BRILLO */ .brillo{ position:absolute; width:6px; height:6px; background:white; border-radius:50%; box-shadow:0 0 10px white,0 0 20px white; animation: brillar 2s infinite; pointer-events:none; } @keyframes brillar{ 0%{ opacity:0; transform:scale(0.5); } 50%{ opacity:1; transform:scale(1.5); } 100%{ opacity:0; transform:scale(0.5); } }
-
+/* rosas y pétalos */
+.flor{ position:absolute; top:-100px; pointer-events:none; animation:caer linear; } @keyframes caer{ 0%{transform:translateY(-100px);} 100%{transform:translateY(110vh);} } /* corazones estilo Instagram sin rotación */ .corazon{ position:absolute; bottom:-20px; font-size:20px; pointer-events:none; animation:flotar 4s linear forwards; } @keyframes flotar{ 0%{transform:translateY(0) scale(1); opacity:1;} 50%{transform:translateY(-200px) scale(1.3); opacity:0.9;} 100%{transform:translateY(-400px) scale(1.6); opacity:0;} }
+.foto{ width:80%; border-radius:15px; margin-bottom:15px; object-fit:cover; }
 </style>
 </head>
-
 <body>
 
-<audio id="musica" autoplay loop> <source src="musica.mp3" type="audio/mpeg"> 
-</audio> 
-<script> window.addEventListener("click", function() { const audio = document.getElementById("musica"); audio.play(); }); </script>
+<audio id="musica" loop>
+  <source src="musica.mp3" type="audio/mpeg">
+</audio>
 
-<div class="container">
+<div class="card">
 
-<h1>Feliz Día de la Mujer</h1>
+<img src="aa.jpeg"class="foto">
+<h1>🌸 Feliz Día de la Mujer Mi Amor Hermosa 🌸</h1>
 
-<p>
-Hoy celebramos tu fuerza, valentía e inspiración.
-Gracias por hacer del mundo un lugar mejor.
-</p>
+<p>😍 Hoy celebró tu fuerza, tu valentía y tu capacidad de hacer del mundo un lugar mejor, y en especial mi mundo🙏🌏.</p>
 
-<button onclick="mostrarMensaje()">Ver mensaje especial 💜</button>
-
+<button onclick="mostrarMensaje()">Ver mensaje 💜</button>
 <div class="mensaje" id="mensaje">
 ✨ Nunca olvides lo increíble que eres.  
-Feliz Día de la Mujer. 💜🌸
+¡Feliz Día de la Mujer! 🌹
 </div>
-
+<br>
+<button onclick="compartir()">Compartir 📲</button>
 </div>
 
 <script>
+/* activar musica al primer clic */
+window.addEventListener("click",function(){
+  document.getElementById("musica").play();
+},{once:true});
 
+/* mostrar mensaje */
 function mostrarMensaje(){
-document.getElementById("mensaje").style.display="block";
+  document.getElementById("mensaje").style.display="block";
 }
 
-// flores cayendo
-
-function crearFlor(){
-const flor=document.createElement("div");
-flor.classList.add("flower");
-flor.innerHTML="🌸";
-
-flor.style.left=Math.random()*100+"vw";
-flor.style.animationDuration=(Math.random()*5+5)+"s";
-flor.style.fontSize=(Math.random()*20+20)+"px";
-
-document.body.appendChild(flor);
-
-setTimeout(()=>{
-flor.remove();
-},10000);
-}
-
-setInterval(crearFlor,300);
-
-function crearRosa()
-{ let rosa = document.createElement("div"); 
-rosa.classList.add("rosa"); 
-rosa.innerHTML="🌹"; 
-rosa.style.left=Math.random()*100+"vw"; 
-rosa.style.animationDuration=(Math.random()*5+5)+"s"; 
-rosa.style.fontSize=(Math.random()*20+20)+"px"; 
-document.body.appendChild(rosa); 
-setTimeout(()=>
-{ rosa.remove(); 
-},10000); 
-}
-
-setInterval(crearRosa,300);
-
-function crearFlor(){ let flor=document.createElement("div"); flor.classList.add("flor"); let tipos=["🌹","🌸","🌺","💮"]; flor.innerHTML=tipos[Math.floor(Math.random()*tipos.length)]; flor.style.left=Math.random()*100+"vw"; flor.style.fontSize=(Math.random()*25+20)+"px"; flor.style.animationDuration=(Math.random()*5+5)+"s"; document.body.appendChild(flor); setTimeout(()=>{ flor.remove(); },9000); } setInterval(crearFlor,250); /* EFECTO BRILLOS */ function crearBrillo(){ let brillo=document.createElement("div"); brillo.classList.add("brillo"); brillo.style.left=Math.random()*100+"vw"; brillo.style.top=Math.random()*100+"vh"; document.body.appendChild(brillo); setTimeout(()=>{ brillo.remove(); },2000); } setInterval(crearBrillo,150);
-
+/* compartir WhatsApp */
 function compartir(){
-
-let mensaje = "🌸 Feliz Día de la Mujer 💜\nMira esta página especial que hice para ti:\n";
-
-let url = window.location.href;
-
-let enlace = "https://wa.me/?text=" + encodeURIComponent(mensaje + url);
-
-window.open(enlace, "_blank");
-
+  let texto="🌸 Feliz Día de la Mujer 💜 Mira esta página especial:";
+  let url=window.location.href;
+  window.open("https://wa.me/?text="+encodeURIComponent(texto+" "+url));
 }
-</script>
 
+/* rosas y pétalos */
+function crearFlor(){
+  let flor=document.createElement("img");
+  // URL de rosa/pétalo realista
+  flor.src="https://images.vexels.com/media/users/3/147196/isolated/preview/ef9bd0e6f6f0b12e0735846300ae1d0d-ilustracion-de-girasol.png";
+  flor.classList.add("flor");
+  flor.style.left=Math.random()*100+"vw";
+  flor.style.animationDuration=(Math.random()*5+5)+"s";
+  flor.style.width=(Math.random()*50+50)+"px";
+  document.body.appendChild(flor);
+  setTimeout(()=>{flor.remove();},9000);
+}
+function crearFlor1(){
+  let flor=document.createElement("img");
+  // URL de rosa/pétalo realista
+  flor.src="https://www.pngarts.com/files/6/Rainbow-Butterfly-PNG-Free-Download.png";
+  flor.classList.add("flor");
+  flor.style.left=Math.random()*100+"vw";
+  flor.style.animationDuration=(Math.random()*5+5)+"s";
+  flor.style.width=(Math.random()*30+30)+"px";
+  document.body.appendChild(flor);
+  setTimeout(()=>{flor.remove();},9000);
+}
+setInterval(crearFlor,250);
+setInterval(crearFlor1,250);
+
+/* brillos */
+function crearSpark(){
+  let s=document.createElement("div");
+  s.classList.add("spark");
+  s.style.left=Math.random()*100+"vw";
+  s.style.top=Math.random()*100+"vh";
+  document.body.appendChild(s);
+  setTimeout(()=>{s.remove()},2000);
+}
+setInterval(crearSpark,150);
+
+/* corazones estilo Instagram */
+function crearCorazon(){
+  let c=document.createElement("div");
+  c.classList.add("corazon");
+  c.innerHTML="💖";
+  c.style.left=Math.random()*100+"vw";
+  c.style.fontSize=(Math.random()*20+20)+"px";
+  document.body.appendChild(c);
+  setTimeout(()=>{c.remove()},4000);
+}
+setInterval(crearCorazon,500);
+</script>
 </body>
 </html>
-<button onclick="compartir()">Compartir por WhatsApp 📲</button>
