@@ -10,7 +10,7 @@
 body{
 margin:0;
 font-family:Arial, sans-serif;
-height:100vh;
+min-height:100vh;
 display:flex;
 align-items:center;
 justify-content:center;
@@ -189,6 +189,51 @@ opacity:0;
 }
 
 }
+  /* ===== OPTIMIZACIÓN PARA CELULAR ===== */
+
+@media (max-width:600px){
+
+.card{
+width:90%;
+padding:20px;
+border-radius:20px;
+}
+
+h1{
+font-size:22px;
+}
+
+p{
+font-size:15px;
+}
+
+.foto{
+width:70%;
+max-width:180px;
+}
+
+button{
+width:100%;
+font-size:17px;
+padding:14px;
+}
+
+.mensaje{
+font-size:16px;
+}
+
+.teamo{
+font-size:35px;
+text-align:center;
+padding:0 10px;
+}
+
+}
+
+/* evitar que elementos salgan de pantalla */
+body{
+overflow-x:hidden;
+}
 </style>
 </head>
 
@@ -356,3 +401,4 @@ setInterval(crearSpark,400);
 </body>
 
 </html>
+
