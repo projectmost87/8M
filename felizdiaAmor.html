@@ -10,15 +10,23 @@
 body{
 margin:0;
 font-family:Arial, sans-serif;
+
 min-height:100vh;
+width:100%;
+
 display:flex;
 align-items:center;
 justify-content:center;
-overflow:hidden;
+
+overflow-x:hidden;
+
 color:white;
+
 background:linear-gradient(135deg,#ff4fa3,#7b2cbf,#ff85c1);
 background-size:400% 400%;
 animation:fondo 12s infinite;
+padding:15px;
+box-sizing:border-box;
 }
 
 @keyframes fondo{
@@ -29,14 +37,21 @@ animation:fondo 12s infinite;
 
 /* tarjeta */
 .card{
-width:350px;
-padding:30px;
+width:100%;
+max-width:360px;
+padding:25px;
 border-radius:25px;
+
 background:rgba(255,255,255,0.15);
 backdrop-filter:blur(15px);
+
 box-shadow:0 20px 60px rgba(0,0,0,0.3);
+
 text-align:center;
+
 animation:entrada 1.5s ease;
+
+box-sizing:border-box;
 }
 
 @keyframes entrada{
@@ -56,11 +71,14 @@ line-height:1.5;
 
 /* foto */
 .foto{
-width:55%;
+width:100%;
+max-width:200px;
 border-radius:15px;
 margin-bottom:15px;
 object-fit:cover;
+
 box-shadow:0 10px 30px rgba(0,0,0,0.4);
+
 transition:0.3s;
 }
 
@@ -71,12 +89,19 @@ transform:scale(1.05);
 /* botón */
 button{
 margin-top:15px;
-padding:12px 25px;
+
+width:100%;
+
+padding:14px;
+
 border:none;
 border-radius:25px;
+
 background:linear-gradient(45deg,#ff4fa3,#7b2cbf);
+
 color:white;
 font-size:16px;
+
 cursor:pointer;
 transition:.3s;
 }
@@ -141,14 +166,25 @@ animation:brillo 2s linear forwards;
 
 .teamo{
 position:absolute;
+
 top:50%;
 left:50%;
+
 transform:translate(-50%,-50%) scale(0);
-font-size:60px;
+
+font-size:clamp(30px,8vw,60px);
+
 font-weight:bold;
+
+text-align:center;
+padding:10px;
+
 color:white;
+
 text-shadow:0 0 20px #ff4fa3,0 0 40px #ff85c1;
+
 animation:aparecerTeAmo 2s ease forwards;
+
 pointer-events:none;
 }
 
@@ -404,6 +440,7 @@ setInterval(crearSpark,400);
 
 </body>
 </html>
+
 
 
 
