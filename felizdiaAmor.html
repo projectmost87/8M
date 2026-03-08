@@ -27,7 +27,7 @@ animation:fondo 12s infinite;
 100%{background-position:0% 50%;}
 }
 
-/* tarjeta estilo Instagram */
+/* tarjeta */
 .card{
 width:350px;
 padding:30px;
@@ -38,120 +38,324 @@ box-shadow:0 20px 60px rgba(0,0,0,0.3);
 text-align:center;
 animation:entrada 1.5s ease;
 }
+
 @keyframes entrada{
 from{opacity:0; transform:translateY(50px);}
 to{opacity:1; transform:translateY(0);}
 }
-h1{font-size:30px; margin-bottom:15px;}
-p{font-size:17px; line-height:1.5;}
+
+h1{
+font-size:28px;
+margin-bottom:15px;
+}
+
+p{
+font-size:17px;
+line-height:1.5;
+}
+
+/* foto */
+.foto{
+width:55%;
+border-radius:15px;
+margin-bottom:15px;
+object-fit:cover;
+box-shadow:0 10px 30px rgba(0,0,0,0.4);
+transition:0.3s;
+}
+
+.foto:hover{
+transform:scale(1.05);
+}
+
+/* botón */
 button{
 margin-top:15px;
 padding:12px 25px;
 border:none;
 border-radius:25px;
-background:white;
-color:#7b2cbf;
+background:linear-gradient(45deg,#ff4fa3,#7b2cbf);
+color:white;
 font-size:16px;
 cursor:pointer;
 transition:.3s;
 }
-button:hover{transform:scale(1.1);}
-.mensaje{display:none; margin-top:15px; font-size:18px;}
 
-/* rosas y pétalos */
-.flor{ position:absolute; top:-100px; pointer-events:none; animation:caer linear; } @keyframes caer{ 0%{transform:translateY(-100px);} 100%{transform:translateY(110vh);} } 
+button:hover{
+transform:scale(1.1);
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+}
 
-/* corazones estilo Instagram sin rotación */
-.corazon{ position:absolute; bottom:-20px; font-size:20px; pointer-events:none; animation:flotar 4s linear forwards; } @keyframes flotar{ 0%{transform:translateY(0) scale(1); opacity:1;} 50%{transform:translateY(-200px) scale(1.3); opacity:0.9;} 100%{transform:translateY(-400px) scale(1.6); opacity:0;} }
-.foto{ width:50%; border-radius:15px; margin-bottom:15px; object-fit:cover; }
+/* mensaje */
+.mensaje{
+display:none;
+margin-top:15px;
+font-size:18px;
+opacity:0;
+transition:0.5s;
+}
+
+/* flores */
+.flor{
+position:absolute;
+top:-100px;
+pointer-events:none;
+animation:caer linear;
+}
+
+@keyframes caer{
+0%{transform:translateY(-100px);}
+100%{transform:translateY(110vh);}
+}
+
+/* corazones */
+.corazon{
+position:absolute;
+bottom:-20px;
+font-size:20px;
+pointer-events:none;
+animation:flotar 4s linear forwards;
+}
+
+@keyframes flotar{
+0%{transform:translateY(0) scale(1); opacity:1;}
+50%{transform:translateY(-200px) scale(1.3); opacity:0.9;}
+100%{transform:translateY(-400px) scale(1.6); opacity:0;}
+}
+
+/* brillos */
+.spark{
+position:absolute;
+width:6px;
+height:6px;
+background:white;
+border-radius:50%;
+opacity:0.8;
+animation:brillo 2s linear forwards;
+}
+
+@keyframes brillo{
+0%{transform:scale(0); opacity:1;}
+100%{transform:scale(2); opacity:0;}
+}
+
+.teamo{
+position:absolute;
+top:50%;
+left:50%;
+transform:translate(-50%,-50%) scale(0);
+font-size:60px;
+font-weight:bold;
+color:white;
+text-shadow:0 0 20px #ff4fa3,0 0 40px #ff85c1;
+animation:aparecerTeAmo 2s ease forwards;
+pointer-events:none;
+}
+
+@keyframes aparecerTeAmo{
+
+0%{
+transform:translate(-50%,-50%) scale(0);
+opacity:0;
+}
+
+50%{
+transform:translate(-50%,-50%) scale(1.3);
+opacity:1;
+}
+
+100%{
+transform:translate(-50%,-50%) scale(1);
+opacity:0.9;
+}
+
+}
+
+.explosion-corazon{
+position:absolute;
+top:50%;
+left:50%;
+font-size:25px;
+pointer-events:none;
+animation:explotar 1.5s ease-out forwards;
+}
+
+@keyframes explotar{
+
+0%{
+transform:translate(-50%,-50%) scale(0);
+opacity:1;
+}
+
+100%{
+transform:translate(var(--x),var(--y)) scale(1.5);
+opacity:0;
+}
+
+}
 </style>
 </head>
+
 <body>
 
 <audio id="musica" loop>
-  <source src="musica.mp3" type="audio/mpeg">
+<source src="musica.mp3" type="audio/mpeg">
 </audio>
 
 <div class="card">
 
-<img src="aa.jpeg"class="foto">
+<img src="aa.jpeg" class="foto">
+
 <h1>🌸 Feliz Día de la Mujer Mi Amor Hermosa 🌸</h1>
 
-<p>😍 Hoy celebró tu fuerza, tu valentía y tu capacidad de hacer del mundo un lugar mejor, y en especial mi mundo🙏🌏.</p>
+<p>
+😍 Hoy celebro tu fuerza, tu valentía y tu capacidad de hacer del mundo
+un lugar mejor, y en especial mi mundo 🙏🌏.
+</p>
 
 <button onclick="mostrarMensaje()">Ver mensaje 💜</button>
+
 <div class="mensaje" id="mensaje">
-✨ Nunca olvides lo increíble que eres.  
+✨ Nunca olvides lo increíble que eres.<br>
 ¡Feliz Día de la Mujer! 🌹
 </div>
+
 </div>
 
 <script>
-/* activar musica al primer clic */
+
+function mostrarTeAmo(){
+
+let t=document.createElement("div");
+
+t.classList.add("teamo");
+
+t.innerHTML="💖 Te amo 💖";
+
+document.body.appendChild(t);
+
+setTimeout(()=>{
+t.remove();
+},4000);
+
+}
+
+function explosionCorazones(){
+
+for(let i=0;i<25;i++){
+
+let c=document.createElement("div");
+
+c.classList.add("explosion-corazon");
+
+c.innerHTML="❤️";
+
+/* dirección aleatoria */
+let x=(Math.random()*600-300)+"px";
+let y=(Math.random()*600-300)+"px";
+
+c.style.setProperty("--x",x);
+c.style.setProperty("--y",y);
+
+document.body.appendChild(c);
+
+setTimeout(()=>{c.remove();},1500);
+
+}
+
+}
+/* activar música */
 window.addEventListener("click",function(){
-  document.getElementById("musica").play();
+const audio=document.getElementById("musica");
+audio.volume=0.7;
+audio.play().catch(()=>{});
 },{once:true});
 
-/* mostrar mensaje */
+/* mostrar mensaje animado */
 function mostrarMensaje(){
-  document.getElementById("mensaje").style.display="block";
+
+let m=document.getElementById("mensaje");
+
+m.style.display="block";
+
+setTimeout(()=>{m.style.opacity=1},50);
+
+/* iniciar animaciones */
+setInterval(crearFlor,700);
+setInterval(crearFlor1,900);
+
+setInterval(crearCorazon,900);
+mostrarTeAmo();
+explosionCorazones();
 }
 
-/* compartir WhatsApp 
-function compartir(){
-  let texto="🌸 Feliz Día de la Mujer 💜 Mira esta página especial:";
-  let url=window.location.href;
-  window.open("https://wa.me/?text="+encodeURIComponent(texto+" "+url));
-}*/
-
-/* rosas y pétalos */
+/* flores */
 function crearFlor(){
-  let flor=document.createElement("img");
-  // URL de rosa/pétalo realista
-  flor.src="https://images.vexels.com/media/users/3/147196/isolated/preview/ef9bd0e6f6f0b12e0735846300ae1d0d-ilustracion-de-girasol.png";
-  flor.classList.add("flor");
-  flor.style.left=Math.random()*100+"vw";
-  flor.style.animationDuration=(Math.random()*5+5)+"s";
-  flor.style.width=(Math.random()*50+50)+"px";
-  document.body.appendChild(flor);
-  setTimeout(()=>{flor.remove();},9000);
+let flor=document.createElement("img");
+
+flor.src="https://images.vexels.com/media/users/3/147196/isolated/preview/ef9bd0e6f6f0b12e0735846300ae1d0d-ilustracion-de-girasol.png";
+
+flor.classList.add("flor");
+
+flor.style.left=Math.random()*100+"vw";
+flor.style.animationDuration=(Math.random()*6+6)+"s";
+flor.style.width=(Math.random()*40+40)+"px";
+
+document.body.appendChild(flor);
+
+setTimeout(()=>{flor.remove();},9000);
 }
+
+/* mariposas */
 function crearFlor1(){
-  let flor=document.createElement("img");
-  // URL de rosa/pétalo realista
-  flor.src="https://www.pngarts.com/files/6/Rainbow-Butterfly-PNG-Free-Download.png";
-  flor.classList.add("flor");
-  flor.style.left=Math.random()*100+"vw";
-  flor.style.animationDuration=(Math.random()*5+5)+"s";
-  flor.style.width=(Math.random()*30+30)+"px";
-  document.body.appendChild(flor);
-  setTimeout(()=>{flor.remove();},9000);
+let flor=document.createElement("img");
+
+flor.src="https://www.pngarts.com/files/6/Rainbow-Butterfly-PNG-Free-Download.png";
+
+flor.classList.add("flor");
+
+flor.style.left=Math.random()*100+"vw";
+flor.style.animationDuration=(Math.random()*6+6)+"s";
+flor.style.width=(Math.random()*30+30)+"px";
+
+document.body.appendChild(flor);
+
+setTimeout(()=>{flor.remove();},9000);
 }
-setInterval(crearFlor,250);
-setInterval(crearFlor1,250);
 
 /* brillos */
 function crearSpark(){
-  let s=document.createElement("div");
-  s.classList.add("spark");
-  s.style.left=Math.random()*100+"vw";
-  s.style.top=Math.random()*100+"vh";
-  document.body.appendChild(s);
-  setTimeout(()=>{s.remove()},2000);
-}
-setInterval(crearSpark,150);
+let s=document.createElement("div");
 
-/* corazones estilo Instagram */
-function crearCorazon(){
-  let c=document.createElement("div");
-  c.classList.add("corazon");
-  c.innerHTML="💖";
-  c.style.left=Math.random()*100+"vw";
-  c.style.fontSize=(Math.random()*20+20)+"px";
-  document.body.appendChild(c);
-  setTimeout(()=>{c.remove()},4000);
+s.classList.add("spark");
+
+s.style.left=Math.random()*100+"vw";
+s.style.top=Math.random()*100+"vh";
+
+document.body.appendChild(s);
+
+setTimeout(()=>{s.remove()},2000);
 }
-setInterval(crearCorazon,500);
+
+/* corazones */
+function crearCorazon(){
+let c=document.createElement("div");
+
+c.classList.add("corazon");
+
+c.innerHTML="💖";
+
+c.style.left=Math.random()*100+"vw";
+c.style.fontSize=(Math.random()*20+20)+"px";
+
+document.body.appendChild(c);
+
+setTimeout(()=>{c.remove()},4000);
+}
+
+setInterval(crearSpark,400);
+
 </script>
+
 </body>
 </html>
